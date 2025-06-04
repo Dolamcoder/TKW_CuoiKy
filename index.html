@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VKU Career Path - Trang Chủ</title>
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./public/css/index.css">
+</head>
+<body>
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0"
+    nonce="random_nonce"></script>
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="header_logo">
+      <a href="#"><img src="./public/img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+    </div>
+    <div class="header_bar">
+      <button id="menuMobile" class="menu_mobile_button"><i class="fa fa-bars"></i></button>
+      <div class="menu_mobile" id="menu_mobile">
+        <div class="menu_mobile_header">
+          <div class="menu_mobile_logo">
+            <a href=""><img src="./public/img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+          </div>
+          <button id="closeMenuMobile" class="menu_mobile_close"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="menu_mobile_item">
+          <li class="active"><a href="#">Trang chủ</a></li>
+          <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
+          <li><a href="#">Mô tả ngành</a></li>
+          <li><a href="#">Cộng đồng</a></li>
+          <li><a href="./public/html/login.html">Đăng nhập</a></li>
+        </div>
+      </div>
+    </div>
+    <div class="header_menu">
+      <ul>
+        <li class="active"><a href="#">Trang chủ</a></li>
+        <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
+        <li><a href="#">Mô tả ngành</a></li>
+        <li><a href="#">Cộng đồng</a></li>
+      </ul>
+    </div>
+    <div class="logIn_signUp">
+      <button id="loginButton">
+        <a href="./public/html/login.html"><i class="fa fa-user"></i><span> Đăng nhập</span></a>
+      </button>
+    </div>
+    <div class="avartar">
+      <button class="avartarButton"><img src="./public/img/avartar.jpg" alt=""></button>
+      <div class="dropdown-content dropdownMenuAvartar">
+        <a href="/profile">Trang cá nhân</a>
+        <a href="/login" class="logout">Đăng xuất</a>
+      </div>
+      <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
+    </div>
+  </header>
+  <header id="scroll">
+    <div class="header_logo">
+      <a href="#"><img src="./public/img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+    </div>
+    <div class="header_bar">
+      <button id="menuMobileScroll" class="menu_mobile_button"><i class="fa fa-bars"></i></button>
+      <div class="menu_mobile" id="menu_mobile_scroll">
+        <div class="menu_mobile_header">
+          <div class="menu_mobile_logo">
+            <a href="#"><img src="/img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+          </div>
+          <button id="closeMenuMobileScroll" class="menu_mobile_close"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="menu_mobile_item">
+          <li class="active"><a href="/">Trang chủ</a></li>
+          <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
+          <li><a href="#">Mô tả ngành</a></li>          <li><a href="#">Cộng đồng</a></li>
+          <li><a href="./public/html/login.html">Đăng Nhập</a></li>
+        </div>
+      </div>
+    </div>
+    <div class="header_menu">
+      <ul>
+        <li class="active"><a href="#">Trang chủ</a></li>
+        <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
+        <li><a href="#">Mô tả ngành</a></li>
+        <li><a href="#">Cộng đồng</a></li>
+      </ul>
+    </div>
+    <div class="logIn_signUp">
+      <button id="loginButton">
+        <a href="./public/html/login.html"><i class="fa fa-user"></i><span> Đăng nhập</span></a>
+      </button>
+    </div>
+    <div class="avartar">
+      <button class="avartarButton"><img src="/img/avartar.jpg" alt=""></button>
+      <div class="dropdown-content dropdownMenuAvartar">
+        <a href="">Trang cá nhân</a>
+        <a href="./public/html/login.html" class="logout">Đăng xuất</a>
+      </div>
+      <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
+    </div>
+  </header>
+  <!-- Introduce Section -->
+  <section class="introduce">
+    <div class="pb-5 pt-3 ">
+      <div class="container text-center">
+        <h2>
+          VKU Career Path - Cùng bạn đi đến tương lai
+        </h2>
+        <p class="mb-5 titleP">
+          Những giá trị thiết thực giúp bạn chọn đúng ngành – đi đúng hướng – đạt đến ước mơ!
+        </p>
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-6 col-lg-6">
+            <div class="card_item h-100 shadow border-0 hover-shadow">
+              <div class="card-body p-4">
+                <div class="display-4  text-primary mb-3">🔍</div>
+                <h5 class="card-title fw-bold text-dark">Khám phá ngành học phù hợp</h5>
+                <p class="card-text text-muted">
+                  Trắc nghiệm định hướng đơn giản, dễ hiểu giúp bạn nhanh chóng tìm ra ngành học lý tưởng tại VKU.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-md-6 col-lg-6">
+            <div class="card_item h-100 shadow border-0 hover-shadow">
+              <div class="card-body p-4">
+                <div class="display-4  text-success mb-3">📚</div>
+                <h5 class="card-title fw-bold text-dark">Hiểu rõ ngành – Tự tin chọn lựa</h5>
+                <p class="card-text text-muted">
+                  Mô tả chi tiết từng ngành học, cơ hội nghề nghiệp, lộ trình đào tạo và yêu cầu đầu vào giúp bạn quyết
+                  định sáng suốt.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-6 col-lg-6">
+            <div class="card_item h-100 shadow border-0 hover-shadow">
+              <div class="card-body p-4">
+                <div class=" display-4  text-warning mb-3">🛤️</div>
+                <h5 class="card-title fw-bold text-dark">Lộ trình học tập cá nhân hóa</h5>
+                <p class="card-text text-muted">
+                  Lên kế hoạch học tập rõ ràng từ năm nhất đến năm tư, giúp bạn vững bước trên hành trình hướng tới công
+                  việc mơ ước.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-md-6 col-lg-6">
+            <div class="card_item h-100 shadow border-0 hover-shadow">
+              <div class="card-body p-4">
+                <div class="display-4  text-danger mb-3">🤝</div>
+                <h5 class="card-title fw-bold text-dark">Cộng đồng đồng hành & hỗ trợ</h5>
+                <p class="card-text text-muted">
+                  Kết nối học sinh - sinh viên - giảng viên - tư vấn viên. Hỏi đáp dễ dàng, đăng ký tư vấn tuyển sinh
+                  ngay trên web.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- List Majors Section -->
+  <section class="list_major container-fluid section">
+    <h2 data-aos="fade-up">Danh Sách Ngành Học</h2>
+    <p data-aos="fade-up">VKU - nơi hội tụ những ngành học hot nhất hiện nay, gắn kết doanh nghiệp, sẵn sàng cho kỷ
+      nguyên số.</p>
+    <div class="container">
+      <div class="list_major_content">
+        <div class="row">
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/CNTT.jpg" alt="Công Nghệ Thông Tin">
+            <h3 class="mt-2">Công Nghệ Thông Tin</h3>
+            <button><a href="https://daotao.vku.udn.vn/uploads/CTDT/CNTT/2023/CTDT_CNTT_KS23.pdf" target="_blank">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/ThietKeViMach.jpg" alt="Thiết Kế Vi Mạch">
+            <h3 class="mt-2">Thiết Kế Vi Mạch</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/marketTing.jpg" alt="Marketing">
+            <h3 class="mt-2">Marketing</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/triTueNhanTao.jpg" alt="Trí Tuệ Nhân Tạo">
+            <h3 class="mt-2">Trí Tuệ Nhân Tạo</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/anToanThongTin.jpg" alt="An Toàn Thông Tin">
+            <h3 class="mt-2">An Toàn Thông Tin</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/congNgheGame.jpg" alt="Công Nghệ Game">
+            <h3 class="mt-2">Công Nghệ Game</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container hidden_major">
+      <div class="list_major_content">
+        <div class="row">
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/CNTT.jpg" alt="Công Nghệ Thông Tin">
+            <h3 class="mt-2">Phân Tích Dữ Liệu</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/ThietKeViMach.jpg" alt="Thiết Kế Vi Mạch">
+            <h3 class="mt-2">Quản Lý Dự Án CNTT</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/marketTing.jpg" alt="Marketing">
+            <h3 class="mt-2">Quản Lý Kinh Doanh</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/triTueNhanTao.jpg" alt="Trí Tuệ Nhân Tạo">
+            <h3 class="mt-2">Kỹ Thuật Máy Tính</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/anToanThongTin.jpg" alt="An Toàn Thông Tin">
+            <h3 class="mt-2">Kỹ Thuật Phần Mềm Ô Tô</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+          <div class="col-md-4 mb-4 list_major_item" data-aos="fade-up">
+            <img class="img-fluid w-100" src="./public/img/congNgheGame.jpg" alt="Công Nghệ Game">
+            <h3 class="mt-2">Logistlics Và Chuổi Công Ứng</h3>
+            <button><a href="#">Xem chi tiết</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="allMajor" data-aos="fade-up">Xem thêm <i class="fa fa-angle-double-down"></i></button>
+  </section>
+  <!-- Statistic Section -->
+  <section class="statistic section">
+    <div class="container text-center">
+      <h2 class="mb-4" data-aos="fade-up">Thống Kê Nổi Bật</h2>
+      <div class="row">
+        <div class="col-md-3 col-6 mb-4">
+          <h3 class="counter" data-target="19">0</h3>
+          <p>Ngành đào tạo</p>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <h3 class="counter" data-target="7000">0</h3>
+          <p>Sinh viên đang học</p>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <h3 class="counter" data-target="5000">0</h3>
+          <p>Sinh viên tốt nghiệp</p>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <h3 class="counter" data-target="59">0</h3>
+          <p>Đối tác doanh nghiệp</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bar Charts Section -->
+  <section class="bar-charts section">
+    <div class="container text-center">
+      <h2 class="mb-4" data-aos="fade-up">Thống Kê Bổ Sung</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Sinh viên tốt nghiệp qua các năm</h5>
+          <canvas id="graduatesBarChart"></canvas>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Số lượng sinh viên theo khoa</h5>
+          <canvas id="studentsBarChart"></canvas>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Sinh viên có việc làm</h5>
+          <canvas id="employmentPieChart" style="max-width: 220px; margin: 0 auto;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news section" id="news" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center mb-5">Tin Tức Biến Động Ngành Nghề</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <a href="https://techcrunch.com/2025/04/18/chatgpt-will-now-use-its-memory-to-personalize-web-searches/">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/thayDoiCongNghe.PNG" alt="cong_nghe">
+                <h5 class="card-title">AI Đang Thay Đổi Ngành Công Nghệ</h5>
+                <p class="card-text mb-3">OpenAI vừa cập nhật tính năng "Memory with Search" cho ChatGPT, cho phép bot
+                  sử dụng thông tin từ bộ nhớ.
+                </p>
+                <a href="https://techcrunch.com/tag/artificial-intelligence/" target="_blank"
+                  class="btn btn-primary">Xem thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a href="https://www.bannerflow.com/blog/ai-marketing-2025-trends">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/xuHuong.png" alt="marketing_trend">
+                <h5 class="card-title">Xu Hướng Marketing Trong Năm 2025</h5>
+                <p class="card-text mb-3">Khám phá các xu hướng marketing AI cho năm 2025, bao gồm tối ưu hóa quảng cáo
+                  theo thời gian thực, cá nhân hóa dự đoán.
+                </p>
+                <a href="https://www.marketingdive.com/" target="_blank" class="btn btn-primary">Xem thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a href="https://www.dezeen.com/2022/03/02/big-viceverse-metaverse-virtual-office-vice-media/">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/metaverse.jpg" alt="metaverse">
+                <h5 class="card-title">Thiết Kế Đồ Họa Trong Metaverse</h5>
+                <p class="card-text mb-3 ">Studio Đan Mạch BIG đã thiết kế tòa nhà đầu tiên trong
+                  metaverse, đó là một văn phòng ảo cho nhân viên của Vice Media Group.
+                </p>
+                <a href="https://www.dezeen.com/tag/metaverse/" target="_blank" class="btn btn-primary">Xem thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a
+            href="https://www.sangfor.com/glossary/cybersecurity/blockchain-security-key-concepts-threats-and-future-trends">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/blockchain.PNG" alt="blockchain">
+                <h5 class="card-title">Blockchain - Xu Hướng Bảo Mật Mới Trong IT</h5>
+                <p class="card-text mb-3">Công nghệ blockchain, đang càng nhận được sự chú ý như một giải pháp tiềm
+                  năng để bảo mật dữ liệu và hệ thống, đồng thời mở ra cơ hội mới cho lĩnh vực khác.
+                </p>
+                <a href="https://cointelegraph.com/" target="_blank" class="btn btn-primary">Xem thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a
+            href="https://theinvestor.vn/vietnam-opens-new-national-innovation-center-facility-chip-design-center-d7186.html">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/chipFactory.jpg" alt="chip_factory">
+                <h5 class="card-title">Cuộc Đua Thiết Kế Chip Tại Việt Nam</h5>
+                <p class="card-text mb-3">Việt Nam vừa chính thức khai trương một cơ sở trung tâm thiết kế chip hiện
+                  đại, với mục tiêu nâng cao vai trò chiến lược của đất nước trong chuỗi cung ứng bán dẫn toàn cầu đang
+                  phát triển mạnh mẽ.
+                </p>
+                <a href="https://theinvestor.vn" target="_blank" class="btn btn-primary">Xem thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a href="https://opendatascience.com/ai-data-science-survey-report-2025-trends-insights-key-findings/">
+            <div class="card news-card h-100">
+              <div class="card-body">
+                <img src="./public/img/dataScience.png" alt="ảnh báo data science">
+                <h5 class="card-title">Data Science: Vũ Khí Quyết Định Trong Kỷ Nguyên AI</h5>
+                <p class="card-text mb-3">Khảo sát mới nhất về AI và Khoa học Dữ liệu cho thấy sự gia tăng ứng dụng AI
+                  trong doanh nghiệp, kéo theo nhu cầu kỹ năng và chiến lược đào tạo phù hợp.
+                </p>
+                <a href="https://opendatascience.com/category/news/" target="_blank" class="btn btn-primary">Xem
+                  thêm</a>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- School Info Section -->
+  <section class="info-school">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.60616692491!2d108.2483614451753!3d15.97526540261403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142108997dc971f%3A0x1295cb3d313469c9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiB2w6AgVHJ1eeG7gW4gdGjDtG5nIFZp4buHdCAtIEjDoG4sIMSQ4bqhaSBo4buNYyDEkMOgIE7hurVuZw!5e1!3m2!1svi!2s!4v1745515559793!5m2!1svi!2s"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col-md-4">
+          <div class="fb-page" data-href="https://www.facebook.com/vku.udn.vn" data-tabs="timeline,events,messages"
+            data-width="500" data-height="500" data-small-header="false" data-adapt-container-width="true"
+            data-hide-cover="false" data-show-facepile="true">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="fb-page" data-href="https://www.facebook.com/cs.vku.udn.vn" data-tabs="timeline,events,messages"
+            data-width="500" data-height="500" data-small-header="false" data-adapt-container-width="true"
+            data-hide-cover="false" data-show-facepile="true">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer  -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row g-5">
+        <!-- VKU Info -->
+        <div class="col-md-3">
+          <img src="./public/img/logon-removebg-preview.png" alt="" style="width: 100px; transform: translateY(-30px);">
+          <p class="text-white-50 small " style="transform: translateY(-30px);">
+            Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn (VKU)
+            là trường đại học công lập trực thuộc Đại học Đà Nẵng.
+          </p>
+        </div>
+
+        <!-- Liên hệ -->
+        <div class="col-md-3">
+          <h5 class="fw-bold mb-3">🤝 Liên hệ</h5>
+          <ul class="list-unstyled text-white-50 small">
+            <li class="d-flex mb-2 align-items-start">
+              <i class="fas fa-map-marker-alt me-2 text-warning mt-1"></i>
+              <span>470 Trần Đại Nghĩa, Hòa Quý, Ngũ Hành Sơn, Đà Nẵng</span>
+            </li>
+            <li class="d-flex mb-2 align-items-center">
+              <i class="fas fa-phone-alt me-2 text-warning"></i>
+              <span>0236.6.552.688</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <i class="fas fa-envelope me-2 text-warning"></i>
+              <span>tuyensinh@vku.udn.vn</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hỗ trợ -->
+        <div class="col-md-3">
+          <h5 class="fw-bold mb-3">🔧 Hỗ trợ</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Câu hỏi
+                thường gặp</a>
+            </li>
+            <li><a href="https://www.facebook.com/olam.333246"
+                class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Hướng dẫn
+                sử dụng</a>
+            </li>
+            <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Chính sách
+                bảo mật</a>
+            </li>
+            <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Điều khoản
+                dịch vụ</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Kết nối -->
+        <div class="col-md-3">
+          <h5 class="fw-bold mb-3">🌐 Kết nối với chúng tôi</h5>
+          <div class="d-flex mb-3">
+            <a href="https://www.facebook.com/vku.udn.vn" class="btn btn-outline-light btn-sm rounded-circle me-2"
+              style="border-color:#3b5998; color:#3b5998;"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/vku_udn_vn" class="btn btn-outline-light btn-sm rounded-circle me-2"
+              style="border-color:#1DA1F2; color:#1DA1F2;"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/@tuoitrevku" class="btn btn-outline-light btn-sm rounded-circle me-2"
+              style="border-color:#FF0000; color:#FF0000;"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/vku.udn.vn/" class="btn btn-outline-light btn-sm rounded-circle"
+              style="border-color:#C13584; color:#C13584;"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary mt-0">
+
+      <div class="text-center text-white-50 mt-3 small">
+        <p>© 2025 Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn. Dù bạn là ai, bạn ở nơi nào
+          chúng tôi
+          luôn đồng hành cùng bạn.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- Animation Background -->
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <!-- JavaScript -->
+  <script src="./public/JavaScript/chart.js"></script>
+  <script src="/public/JavaScript/effect.js"></script>
+  <script src="/public/JavaScript/header.js"></script>
+</body>
+</html>
