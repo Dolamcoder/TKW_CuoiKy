@@ -34,3 +34,21 @@ window.onscroll=function(){
     closeMenuMobileScroll.classList.add('animation_xoay');
     menuMobileScroll.style.transform = 'translateX(100%)';
   });
+  document.querySelectorAll('.avartarButton').forEach((button) => {
+  button.addEventListener('click', () => {
+    const dropdownContent = button.nextElementSibling;
+    if (dropdownContent && dropdownContent.classList.contains('dropdown-content')) {
+      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    }
+  });
+});
+document.querySelectorAll('.logout').forEach((btn) => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = '/';
+  });
+});
+
+
+
