@@ -10,7 +10,7 @@ function goToStep(step) {
 
   // qua b5 thì hiển thị kq từ b2
   if (step === 5) {
-    displayFinalResults();
+    // displayFinalResults(); // Comment lại nếu chưa định nghĩa
   }
 }
 
@@ -1161,12 +1161,13 @@ function getHollandTypeDescription(type) {
 }
 
 // func cho chat (ch xong)
-sendChatBtn.addEventListener("click", sendChatMessage);
-chatInput.addEventListenear("keydown", function (event) {
-  if (event.key === "Enter") {
-    sendChatMessage();
-  }
-});
+// sendChatBtn.addEventListener("click", sendChatMessage);
+// chatInput.addEventListenear("keydown", function (event) {
+//   if (event.key === "Enter") {
+//     sendChatMessage();
+//   }
+// });
+
 // Xử lý form đặt lịch (có thể thêm logic gửi dữ liệu nếu cần)
 document
   .getElementById("consultation-form")
@@ -1175,3 +1176,358 @@ document
     alert("Đặt lịch thành công!");
     this.reset();
   });
+
+// Dữ liệu mẫu cho các ngành
+const programData = {
+    cntt: {
+        name: "Công nghệ Thông tin",
+        jobs: {
+            demand: "Cao",
+            growth: "15% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet", "TopDev"]
+        },
+        salary: {
+            entry: "8-12 triệu",
+            after2Years: "15-20 triệu",
+            senior: "25-40 triệu"
+        },
+        skills: [
+            "Lập trình",
+            "Phân tích hệ thống",
+            "Quản lý dự án",
+            "Tiếng Anh"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "2 kỳ thực tập"
+        },
+        strengths: [
+            "Đội ngũ giảng viên giàu kinh nghiệm",
+            "Phòng lab hiện đại",
+            "Hợp tác với doanh nghiệp lớn",
+            "Chương trình đào tạo chuẩn quốc tế"
+        ],
+        reviews: "4.8/5 từ 200+ cựu sinh viên"
+    },
+    kt: {
+        name: "Kế toán",
+        jobs: {
+            demand: "Ổn định",
+            growth: "8% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet"]
+        },
+        salary: {
+            entry: "6-8 triệu",
+            after2Years: "10-15 triệu",
+            senior: "20-30 triệu"
+        },
+        skills: [
+            "Kế toán",
+            "Phân tích tài chính",
+            "Excel",
+            "Tiếng Anh"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "1 kỳ thực tập"
+        },
+        strengths: [
+            "Chứng chỉ ACCA",
+            "Phòng thực hành kế toán",
+            "Đối tác Big4",
+            "Chương trình đào tạo chuẩn quốc tế"
+        ],
+        reviews: "4.5/5 từ 150+ cựu sinh viên"
+    },
+    qtkd: {
+        name: "Quản trị Kinh doanh",
+        jobs: {
+            demand: "Cao",
+            growth: "12% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet"]
+        },
+        salary: {
+            entry: "7-10 triệu",
+            after2Years: "12-18 triệu",
+            senior: "25-35 triệu"
+        },
+        skills: [
+            "Quản lý",
+            "Marketing",
+            "Tài chính",
+            "Tiếng Anh"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "2 kỳ thực tập"
+        },
+        strengths: [
+            "Chương trình đào tạo đa dạng",
+            "Cơ hội thực tập tại doanh nghiệp",
+            "Đội ngũ giảng viên giàu kinh nghiệm",
+            "Mạng lưới cựu sinh viên rộng"
+        ],
+        reviews: "4.6/5 từ 180+ cựu sinh viên"
+    },
+    mkt: {
+        name: "Marketing",
+        jobs: {
+            demand: "Cao",
+            growth: "10% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet"]
+        },
+        salary: {
+            entry: "7-9 triệu",
+            after2Years: "12-18 triệu",
+            senior: "20-35 triệu"
+        },
+        skills: [
+            "Digital Marketing",
+            "Content Creation",
+            "Phân tích dữ liệu",
+            "Tiếng Anh"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "2 kỳ thực tập"
+        },
+        strengths: [
+            "Phòng studio hiện đại",
+            "Đối tác agency lớn",
+            "Chương trình đào tạo cập nhật",
+            "Cơ hội thực tập đa dạng"
+        ],
+        reviews: "4.7/5 từ 160+ cựu sinh viên"
+    },
+    nn: {
+        name: "Ngôn ngữ Anh",
+        jobs: {
+            demand: "Ổn định",
+            growth: "7% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet"]
+        },
+        salary: {
+            entry: "6-8 triệu",
+            after2Years: "10-15 triệu",
+            senior: "18-25 triệu"
+        },
+        skills: [
+            "Tiếng Anh",
+            "Biên phiên dịch",
+            "Giao tiếp",
+            "Văn hóa quốc tế"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "1 kỳ thực tập"
+        },
+        strengths: [
+            "Giảng viên bản ngữ",
+            "Phòng lab ngôn ngữ",
+            "Chứng chỉ quốc tế",
+            "Cơ hội giao lưu quốc tế"
+        ],
+        reviews: "4.5/5 từ 140+ cựu sinh viên"
+    },
+    "truyen-thong": {
+        name: "Truyền thông Đa phương tiện",
+        jobs: {
+            demand: "Cao",
+            growth: "13% mỗi năm",
+            platforms: ["VietnamWorks", "JobStreet"]
+        },
+        salary: {
+            entry: "7-10 triệu",
+            after2Years: "12-20 triệu",
+            senior: "25-40 triệu"
+        },
+        skills: [
+            "Thiết kế đồ họa",
+            "Quay dựng video",
+            "Social Media",
+            "Content Creation"
+        ],
+        training: {
+            duration: "4 năm",
+            credits: "130 tín chỉ",
+            internship: "2 kỳ thực tập"
+        },
+        strengths: [
+            "Phòng studio hiện đại",
+            "Đối tác media lớn",
+            "Chương trình đào tạo thực tế",
+            "Cơ hội thực tập đa dạng"
+        ],
+        reviews: "4.7/5 từ 170+ cựu sinh viên"
+    }
+};
+
+// Hàm so sánh ngành
+function comparePrograms() {
+    const program1 = document.getElementById('program1').value;
+    const program2 = document.getElementById('program2').value;
+
+    if (!program1 || !program2) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Vui lòng chọn đủ 2 ngành để so sánh',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    if (program1 === program2) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Vui lòng chọn 2 ngành khác nhau để so sánh',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    const data1 = programData[program1];
+    const data2 = programData[program2];
+
+    // Cập nhật tiêu đề
+    document.getElementById('program1-title').textContent = data1.name;
+    document.getElementById('program2-title').textContent = data2.name;
+
+    // Cập nhật cơ hội việc làm
+    document.getElementById('program1-jobs').innerHTML = `
+        <div class="text-sm">
+            <div class="font-semibold text-green-600">${data1.jobs.demand}</div>
+            <div>Tăng trưởng: ${data1.jobs.growth}</div>
+            <div class="text-xs text-gray-500">${data1.jobs.platforms.join(', ')}</div>
+        </div>
+    `;
+    document.getElementById('program2-jobs').innerHTML = `
+        <div class="text-sm">
+            <div class="font-semibold text-green-600">${data2.jobs.demand}</div>
+            <div>Tăng trưởng: ${data2.jobs.growth}</div>
+            <div class="text-xs text-gray-500">${data2.jobs.platforms.join(', ')}</div>
+        </div>
+    `;
+
+    // Cập nhật mức lương
+    document.getElementById('program1-salary').innerHTML = `
+        <div class="text-sm">
+            <div>Khởi điểm: ${data1.salary.entry}</div>
+            <div>Sau 2 năm: ${data1.salary.after2Years}</div>
+            <div>Senior: ${data1.salary.senior}</div>
+        </div>
+    `;
+    document.getElementById('program2-salary').innerHTML = `
+        <div class="text-sm">
+            <div>Khởi điểm: ${data2.salary.entry}</div>
+            <div>Sau 2 năm: ${data2.salary.after2Years}</div>
+            <div>Senior: ${data2.salary.senior}</div>
+        </div>
+    `;
+
+    // Cập nhật kỹ năng
+    document.getElementById('program1-skills').innerHTML = `
+        <ul class="text-sm list-disc list-inside">
+            ${data1.skills.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+    `;
+    document.getElementById('program2-skills').innerHTML = `
+        <ul class="text-sm list-disc list-inside">
+            ${data2.skills.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+    `;
+
+    // Cập nhật thời gian đào tạo
+    document.getElementById('program1-duration').innerHTML = `
+        <div class="text-sm">
+            <div>Thời gian: ${data1.training.duration}</div>
+            <div>Tín chỉ: ${data1.training.credits}</div>
+            <div>Thực tập: ${data1.training.internship}</div>
+        </div>
+    `;
+    document.getElementById('program2-duration').innerHTML = `
+        <div class="text-sm">
+            <div>Thời gian: ${data2.training.duration}</div>
+            <div>Tín chỉ: ${data2.training.credits}</div>
+            <div>Thực tập: ${data2.training.internship}</div>
+        </div>
+    `;
+
+    // Cập nhật thế mạnh
+    document.getElementById('program1-strengths').innerHTML = `
+        <ul class="text-sm list-disc list-inside">
+            ${data1.strengths.map(strength => `<li>${strength}</li>`).join('')}
+        </ul>
+    `;
+    document.getElementById('program2-strengths').innerHTML = `
+        <ul class="text-sm list-disc list-inside">
+            ${data2.strengths.map(strength => `<li>${strength}</li>`).join('')}
+        </ul>
+    `;
+
+    // Cập nhật đánh giá
+    document.getElementById('program1-reviews').textContent = data1.reviews;
+    document.getElementById('program2-reviews').textContent = data2.reviews;
+
+    // Hiển thị kết quả với animation
+    const comparisonResult = document.getElementById('comparison-result');
+    comparisonResult.classList.remove('hidden');
+    comparisonResult.classList.add('show', 'fade-in-up');
+    
+    // Scroll đến kết quả
+    comparisonResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Hiển thị đề xuất AI
+    const aiRecommendation = document.getElementById('ai-recommendation');
+    const aiText = document.getElementById('ai-recommendation-text');
+    
+    // Logic đề xuất đơn giản dựa trên điểm số
+    const score1 = calculateProgramScore(data1);
+    const score2 = calculateProgramScore(data2);
+    
+    if (score1 > score2) {
+        aiText.textContent = `Dựa trên phân tích của chúng tôi, ${data1.name} có vẻ phù hợp hơn với bạn vì có cơ hội việc làm tốt hơn và mức lương khởi điểm cao hơn. Tuy nhiên, hãy cân nhắc kỹ sở thích và năng lực của bản thân trước khi quyết định.`;
+    } else if (score2 > score1) {
+        aiText.textContent = `Dựa trên phân tích của chúng tôi, ${data2.name} có vẻ phù hợp hơn với bạn vì có cơ hội việc làm tốt hơn và mức lương khởi điểm cao hơn. Tuy nhiên, hãy cân nhắc kỹ sở thích và năng lực của bản thân trước khi quyết định.`;
+    } else {
+        aiText.textContent = `Cả hai ngành đều có những ưu điểm riêng. ${data1.name} và ${data2.name} đều có triển vọng tốt. Chúng tôi khuyên bạn nên tham khảo ý kiến từ các chuyên gia và cựu sinh viên để có quyết định phù hợp nhất.`;
+    }
+    
+    aiRecommendation.classList.remove('hidden');
+    aiRecommendation.classList.add('fade-in-up');
+}
+
+// Hàm tính điểm cho ngành
+function calculateProgramScore(program) {
+    let score = 0;
+    
+    // Tính điểm dựa trên cơ hội việc làm
+    if (program.jobs.demand === "Cao") score += 3;
+    else if (program.jobs.demand === "Ổn định") score += 2;
+    
+    // Tính điểm dựa trên mức lương khởi điểm
+    const entrySalary = parseInt(program.salary.entry.split('-')[0]);
+    if (entrySalary >= 8) score += 3;
+    else if (entrySalary >= 6) score += 2;
+    else score += 1;
+    
+    // Tính điểm dựa trên số lượng kỹ năng
+    score += program.skills.length * 0.5;
+    
+    // Tính điểm dựa trên số lượng thế mạnh
+    score += program.strengths.length * 0.5;
+    
+    return score;
+}
+
+// Thêm event listener cho nút so sánh
+document.addEventListener('DOMContentLoaded', function() {
+    const compareBtn = document.getElementById('compare-btn');
+    if (compareBtn) {
+        compareBtn.addEventListener('click', comparePrograms);
+    }
+});

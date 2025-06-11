@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/sweetalert2/sweetalert2.min.css">
-    <script src="/sweetalert2/sweetalert2.all.min.js"></script>
+    <!-- SweetAlert2 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/advise.css">
 
 </head>
@@ -421,8 +422,7 @@
                     Ngay</button>
             </section>
 
-            <section id="comparison-result" class="hidden max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-sm fade-in"
-                aria-live="polite">
+            <section id="comparison-result" class="hidden max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-sm mb-8">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-bold text-gray-800">Kết Quả So Sánh</h3>
                     <div class="flex space-x-2">
@@ -436,44 +436,44 @@
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="comparison-table w-full rounded-lg overflow-hidden">
-                        <thead>
+                    <table class="comparison-table w-full rounded-lg overflow-hidden border border-gray-200">
+                        <thead class="bg-gray-50">
                             <tr>
-                                <th class="text-left">Tiêu chí</th>
-                                <th id="program1-title" class="text-center w-1/3">Ngành 1</th>
-                                <th id="program2-title" class="text-center w-1/3">Ngành 2</th>
+                                <th class="text-left p-4 border-b">Tiêu chí</th>
+                                <th id="program1-title" class="text-center p-4 border-b w-1/3">Ngành 1</th>
+                                <th id="program2-title" class="text-center p-4 border-b w-1/3">Ngành 2</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="font-medium">Cơ hội việc làm</td>
-                                <td id="program1-jobs" class="text-center"></td>
-                                <td id="program2-jobs" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4 border-b">Cơ hội việc làm</td>
+                                <td id="program1-jobs" class="text-center p-4 border-b"></td>
+                                <td id="program2-jobs" class="text-center p-4 border-b"></td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Mức lương khởi điểm</td>
-                                <td id="program1-salary" class="text-center"></td>
-                                <td id="program2-salary" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4 border-b">Mức lương</td>
+                                <td id="program1-salary" class="text-center p-4 border-b"></td>
+                                <td id="program2-salary" class="text-center p-4 border-b"></td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Kỹ năng yêu cầu</td>
-                                <td id="program1-skills" class="text-center"></td>
-                                <td id="program2-skills" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4 border-b">Kỹ năng yêu cầu</td>
+                                <td id="program1-skills" class="text-center p-4 border-b"></td>
+                                <td id="program2-skills" class="text-center p-4 border-b"></td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Thời gian đào tạo</td>
-                                <td id="program1-duration" class="text-center"></td>
-                                <td id="program2-duration" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4 border-b">Chương trình đào tạo</td>
+                                <td id="program1-duration" class="text-center p-4 border-b"></td>
+                                <td id="program2-duration" class="text-center p-4 border-b"></td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Thế mạnh tại VKU</td>
-                                <td id="program1-strengths" class="text-center"></td>
-                                <td id="program2-strengths" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4 border-b">Thế mạnh tại VKU</td>
+                                <td id="program1-strengths" class="text-center p-4 border-b"></td>
+                                <td id="program2-strengths" class="text-center p-4 border-b"></td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Đánh giá từ cựu sinh viên</td>
-                                <td id="program1-reviews" class="text-center"></td>
-                                <td id="program2-reviews" class="text-center"></td>
+                            <tr class="hover:bg-gray-50">
+                                <td class="font-medium p-4">Đánh giá từ cựu sinh viên</td>
+                                <td id="program1-reviews" class="text-center p-4"></td>
+                                <td id="program2-reviews" class="text-center p-4"></td>
                             </tr>
                         </tbody>
                     </table>
