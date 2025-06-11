@@ -518,130 +518,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Render all posts to the DOM
-    function renderPosts() {
-        if (!postsContainer) {
-            console.error('Post container (.col-md-8) not found!');
-            return;
-        }
-        
-        const postCreateArea = document.querySelector('.post-create');
-        if (!postCreateArea) {
-            console.error('Post create area (.post-create) not found!');
-        }
-        
-        // Remove all existing posts except post creation area
-        const existingPosts = postsContainer.querySelectorAll('.profile-card.post:not(#postCreate)');
-        existingPosts.forEach(post => post.remove());
-        
-        // Create a fragment to optimize DOM insertion
-        const fragment = document.createDocumentFragment();
-        
-        // Render posts in order (newest first)
-        posts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.className = 'profile-card post';
-            postElement.dataset.postId = post.id;
-            
-            let visibilityIcon = 'fa-globe-americas';
-            if (post.visibility === 'Bạn bè') visibilityIcon = 'fa-user-friends';
-            if (post.visibility === 'Cộng đồng CNTT') visibilityIcon = 'fa-users';
-            
-            postElement.innerHTML = `
-                <div class="post-header">
-                    <img src="../img/avartar.jpg" class="post-avatar" alt="User">
-                    <div>
-                        <div class="post-user">${post.author}</div>
-                        <div class="post-time">${formatTimestamp(post.timestamp)} 
-                            <span class="post-visibility"><i class="fas ${visibilityIcon}"></i></span>
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <button class="post-menu-btn"><i class="fas fa-ellipsis-h"></i></button>
-                        <div class="post-dropdown">
-                            <button class="delete-post-btn" data-post-id="${post.id}">
-                                <i class="fas fa-trash-alt"></i> Xóa bài viết
-                            </button>
-                        </div>
-                    </div>
+   // Render all posts to the DOM
+function renderPosts() {
+    if (!postsContainer) {
+        console.error('Post container (.col-md-8) not found!');
+        return;
+    }
+
+    const postCreateArea = document.querySelector('.post-create');
+    const fragment = document.createDocumentFragment();
+
+    posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'profile-card post';
+        postElement.dataset.postId = post.id;
+
+        postElement.innerHTML = `
+            <div class="post-header">
+                <img src="../img/avartar.jpg" class="post-avatar" alt="User">
+                <div class="post-user-info">
+                    <div class="post-user">${post.author}</div>
+                    <div class="post-time">${formatTimestamp(post.timestamp)} - <span class="post-visibility">${post.visibility}</span></div>
                 </div>
-                <div class="post-content">
-                    ${post.content ? `<p>${post.content}</p>` : ''}
-                    ${post.image ? `<img src="${post.image}" alt="${post.isGif ? 'GIF' : 'Post Image'}" class="${post.isGif ? 'gif-image' : 'post-image'}">` : ''}
+            </div>
+            <div class="post-content">
+                <p>${post.content || ''}</p>
+                ${post.image ? `<img src="${post.image}" alt="${post.isGif ? 'GIF' : 'Post Image'}" class="${post.isGif ? 'gif-image' : 'post-image'}">` : ''}
+            </div>
+            <div class="post-interactions">
+                <div class="interaction-counts">
+                    <span><i class="fas fa-thumbs-up"></i> ${post.likes}</span>
+                    <span><i class="fas fa-comment"></i> ${post.comments || 0}</span>
                 </div>
-                <div class="post-interactions">
+                <div class="interaction-buttons">
                     <button class="interaction-btn ${post.isLiked ? 'liked' : ''}" data-post-id="${post.id}">
-                        <i class="fas fa-thumbs-up ${post.isLiked ? 'text-primary' : ''}"></i> 
-                        ${post.isLiked ? 'Đã thích' : 'Thích'}
+                        <i class="fas fa-thumbs-up"></i> Thích
                     </button>
                     <button class="interaction-btn"><i class="fas fa-comment"></i> Bình luận</button>
                     <button class="interaction-btn"><i class="fas fa-share"></i> Chia sẻ</button>
                 </div>
-            `;
-            
-            fragment.appendChild(postElement);
-            
-            // Add event listener for menu button
-            const menuBtn = postElement.querySelector('.post-menu-btn');
-            if (menuBtn) {
-                menuBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleDropdown(this);
-                });
-            }
-            
-            // Add event listener for delete button
-            const deleteBtn = postElement.querySelector('.delete-post-btn');
-            if (deleteBtn) {
-                deleteBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const postId = this.dataset.postId;
-                    if (confirm('Bạn có chắc chắn muốn xóa bài viết này?')) {
-                        deletePost(postId);
-                    }
-                });
-            }
-            
-            // Add like functionality
-            const likeBtn = postElement.querySelector('.interaction-btn[data-post-id]');
-            if (likeBtn) {
-                likeBtn.addEventListener('click', function() {
-                    const postId = this.dataset.postId;
-                    toggleLike(postId);
-                });
-            }
-        });
-        
-        // Insert all posts after post creation area
-        if (postCreateArea && postCreateArea.parentNode === postsContainer) {
-            postsContainer.insertBefore(fragment, postCreateArea.nextSibling);
-        } else {
-            postsContainer.appendChild(fragment);
+            </div>
+        `;
+
+        fragment.appendChild(postElement);
+
+        // Sự kiện cho nút thích
+        const likeBtn = postElement.querySelector('.interaction-btn[data-post-id]');
+        if (likeBtn) {
+            likeBtn.addEventListener('click', function() {
+                const postId = this.dataset.postId;
+                toggleLike(postId);
+            });
         }
+    });
+
+    // Xóa các bài đăng cũ và thêm fragment
+    const existingPosts = postsContainer.querySelectorAll('.profile-card.post:not(#postCreate)');
+    existingPosts.forEach(post => post.remove());
+    if (postCreateArea && postCreateArea.parentNode === postsContainer) {
+        postsContainer.insertBefore(fragment, postCreateArea.nextSibling);
+    } else {
+        postsContainer.appendChild(fragment);
     }
-    
-    // Toggle like on a post
-    function toggleLike(postId) {
-        const post = posts.find(p => p.id === postId);
-        if (post) {
-            post.isLiked = !post.isLiked;
-            post.likes = post.isLiked ? post.likes + 1 : post.likes - 1;
-            localStorage.setItem('userPosts', JSON.stringify(posts));
-            
-            const likeBtn = document.querySelector(`.interaction-btn[data-post-id="${postId}"]`);
-            if (likeBtn) {
-                if (post.isLiked) {
-                    likeBtn.classList.add('liked');
-                    likeBtn.innerHTML = '<i class="fas fa-thumbs-up text-primary"></i> Đã thích';
-                    likeBtn.style.color = '#3b82f6';
-                } else {
-                    likeBtn.classList.remove('liked');
-                    likeBtn.innerHTML = '<i class="fas fa-thumbs-up"></i> Thích';
-                    likeBtn.style.color = '';
-                }
-            }
-        }
+}
+
+// Toggle like on a post
+function toggleLike(postId) {
+    const post = posts.find(p => p.id === postId);
+    if (post) {
+        post.isLiked = !post.isLiked;
+        post.likes = post.isLiked ? post.likes + 1 : Math.max(0, post.likes - 1);
+        localStorage.setItem('userPosts', JSON.stringify(posts));
+        renderPosts();
     }
+}
     
     // Reset form after posting
     function resetPostForm() {

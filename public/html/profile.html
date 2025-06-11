@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/profile.css">
 </head>
-
 <body>
     <!-- Header -->
     <header id="mainHeader">
@@ -27,22 +26,20 @@
                     <button id="closeMenuMobile" class="menu_mobile_close"><i class="fa fa-times"></i></button>
                 </div>
                 <div class="menu_mobile_item">
-                    <li class="active"><a href="#">Trang chủ</a></li>
-                    <li><a href="/advise">Tư vấn ngành</a></li>
+                    <li ><a href="/">Trang chủ</a></li>
+                    <li><a href="./advise.html">Tư vấn ngành</a></li>
                     <li><a href="#">Mô tả ngành</a></li>
-                    <li><a href="#">Lộ trình học tập</a></li>
-                    <li><a href="#">Cộng đồng</a></li>
-                    <li><a href="/login">Đăng nhập</a></li>
+                    <li class="active"><a href="#">Cộng đồng</a></li>
+                    <li><a href="./login.html">Đăng nhập</a></li>
                 </div>
             </div>
         </div>
         <div class="header_menu">
             <ul>
-                <li class="active"><a href="#">Trang chủ</a></li>
-                <li><a href="/advise">Tư vấn ngành</a></li>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="./advise.html">Tư vấn ngành</a></li>
                 <li><a href="#">Mô tả ngành</a></li>
-                <li><a href="#">Lộ trình học tập</a></li>
-                <li><a href="#">Cộng đồng</a></li>
+                <li class="active"><a href="#">Cộng đồng</a></li>
             </ul>
         </div>
         <div class="logIn_signUp">
@@ -54,7 +51,7 @@
             <button class="avartarButton"><img src="../img/avartar.jpg" alt=""></button>
             <div class="dropdown-content dropdownMenuAvartar">
                 <a href="/profile">Trang cá nhân</a>
-                <a href="/login" class="logout">Đăng xuất</a>
+                <a href="" class="logout">Đăng xuất</a>
             </div>
             <span class="userName profile-name"></span>
         </div>
@@ -92,7 +89,7 @@
 
         <!-- Profile Navigation -->
         <section class="profile-nav">
-            <a href="#" class="profile-nav-item active">Dòng thời gian</a>
+            <a href="#" class="profile-nav-item ml-2 active">Dòng thời gian</a>
             <a href="#" class="profile-nav-item">Dự án nổi bật</a>
             <a href="#" class="profile-nav-item">Kết nối</a>
         </section>
@@ -207,15 +204,14 @@
         </section>
     </div>
     <!-- Nút Back to Top -->
-    <button id="backToTop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></button>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-    <script src="/public/JavaScript/profile.js"></script>
-    <script src="/public/JavaScript/checkLoginStatus.js"></script>\
-    <script src="/public/JavaScript/header.js"></script>
-    <script src="/public/JavaScript/post.js"></script>
+    <script src="../JavaScript/checkLoginStatus.js"></script>
+    <script src="../JavaScript/header.js"></script>
+    <script src="../JavaScript/post.js"></script>
+    <script src="../JavaScript/profile.js"></script>
 </body>
 
 </html>
