@@ -48,7 +48,7 @@ document.getElementById('submitLogin').addEventListener('click', function(event)
 localStorage.setItem('isLoggedIn', 'true');
 localStorage.setItem('username', registeredUser.name);
 
-window.location.href = '/';
+window.location.href = '../../index.html';
   console.log({ email: emailLogin, password: passLogin });
 });
 
