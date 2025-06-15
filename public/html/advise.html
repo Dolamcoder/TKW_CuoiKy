@@ -107,25 +107,30 @@
         <article id="step-1" class="step-content active" role="tabpanel" aria-labelledby="step1-tab">
             <section class="card p-4 shadow">
                 <h2 class="text-primary font-weight-bold mb-3">GIỚI THIỆU TRẮC NGHIỆM</h2>
-                <p><strong>Bài trắc nghiệm này sẽ giúp bạn khám phá ngành học phù hợp dựa trên bài trắc nghiệm Holland
+                <p class="mb-3 text-xl"><strong>Bài trắc nghiệm này sẽ giúp bạn khám phá ngành học phù hợp dựa trên
+                        bài
+                        trắc nghiệm Holland
                         Code và các khung tâm lý học nghề nghiệp.</strong></p>
-                <p>Hệ thống AI của chúng tôi sẽ phân tích câu trả lời của bạn và đề xuất 3 ngành học phù hợp nhất với
+                <p class="mb-2">Hệ thống AI của chúng tôi sẽ phân tích câu trả lời của bạn và đề xuất 3 ngành học
+                    phù
+                    hợp nhất với
                     tính cách, sở thích và năng lực của bạn .</p>
-                <h5 class="mt-4 text-primary font-weight-bold">Hướng dẫn:</h5>
-                <p><strong>Trước khi thực hiện:</strong></p>
-                <ul>
+                <h5 class="text-primary font-weight-bold mt-2">Hướng dẫn:</h5>
+                <p class="mt-2 mb-2"><strong>Trước khi thực hiện:</strong></p>
+                <ol>
                     <li>Chọn nơi yên tĩnh để tập trung</li>
                     <li>Dành khoảng 10-15 phút để hoàn thành</li>
-                </ul>
-                <p><strong>Khi thực hiện:</strong></p>
-                <p>Hãy trả lời trung thực theo cảm nhận của bạn:</p>
+                </ol>
+                <p class="mt-2 mb-2"><strong>Khi thực hiện:</strong></p>
+                <p class="mb-2 mt-2">Hãy trả lời trung thực theo cảm nhận của bạn:</p>
                 <ol>
                     <li>Kéo thanh trượt để thể hiện mức độ phù hợp</li>
                     <li>Không có câu trả lời đúng hay sai</li>
                     <li>Chọn phương án phản ánh đúng nhất con người bạn</li>
                 </ol>
-                <p><strong>Lưu ý:</strong> Kết quả chỉ mang tính chất tham khảo, bạn nên kết hợp với tư vấn từ chuyên
-                    gia để có quyết định chính xác nhất về ngành học.</p>
+                <p class="mt-2 mb-2 warning-text"><strong class="text-red-600">Lưu ý:</strong> Kết quả chỉ mang tính
+                    chất tham khảo, bạn nên kết hợp với
+                    tư vấn từ chuyên gia để có quyết định chính xác nhất về ngành học.</p>
             </section>
         </article>
         <!-- bước 2 -->
@@ -256,7 +261,7 @@
                                 <label for="notes" class="form-label">Ghi chú (nếu có)</label>
                                 <textarea id="notes" rows="3" class="form-control"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Đặt Lịch Ngay</button>
+                            <button type="submit" id="submitBtn" class="btn btn-primary w-100">Đặt Lịch Ngay</button>
                         </form>
                     </div>
                 </section>
@@ -513,6 +518,7 @@
     <script src="../JavaScript/checkLoginStatus.js"></script>
     <script src="../JavaScript/compareMajor.js"></script>
     <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+    <script src="../JavaScript/checkDataBookLich.js"></script>
     <script>
         const tudong_chatbox = new TuDongChat('vBzNMpKftmnipPPh_W6nN')
         tudong_chatbox.initial()
