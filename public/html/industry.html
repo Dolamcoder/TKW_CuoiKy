@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKU Career Path - Mô tả ngành</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/sweetalert2/sweetalert2.min.css">
+    <script src="/sweetalert2/sweetalert2.all.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #c64889;
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-top: 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        position: relative;
+        padding-left: 15px;
+    }
+
+    h3::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 70%;
+        width: 4px;
+        border-radius: 2px;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+        color: #4a5568;
+        line-height: 1.7;
+    }
+
+    ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        position: relative;
+        color: #4a5568;
+    }
+
+    li::before {
+        content: '';
+        position: absolute;
+        left: -1.25rem;
+        top: 0.65rem;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: currentColor;
+    }
+
+    @keyframes gradient-animation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .majors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1280px;
+        margin: 5rem auto;
+    }
+
+    .major-item {
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(187, 53, 118, 0.358);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 350px; 
+        /* Gradient di chuyển */
+        background: linear-gradient(270deg, #51e6d3, #6b47ff, #d84ba0); 
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+    }
+
+    .major-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .major-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0; 
+        transition: opacity 0.5s ease-in-out; 
+        z-index: 1; 
+        /* Gradient di chuyển */
+        background: linear-gradient(270deg, #51e6d3, #6b47ff, #d84ba0); 
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+    }
+
+    .major-item:hover .major-overlay {
+        opacity: 0.95; 
+    }
+
+    .major-content {
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        color: white;
+        text-align: center;
+        transition: all 0.5s;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .major-content i {
+        font-size: 50px;
+        margin-bottom: 20px;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .major-content h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s, transform 0.3s; 
+    }
+
+    .major-item:hover .major-content i,
+    .major-item:hover .major-content h3 {
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+
+    .major-details {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s;
+        position: absolute;
+        width: calc(100% - 60px);
+        bottom: 30px;
+        left: 30px; 
+        right: 30px; 
+        color: white; 
+        text-align: center; 
+    }
+
+    .major-details p {
+        color: white; 
+    }
+
+    .major-item:hover .major-details {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .major-item button {
+        margin-top: 20px;
+        padding: 10px 25px;
+        background: white;
+        color: var(--color); 
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .major-item button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .major-info {
+        padding: 30px;
+        border-radius: 15px;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(224, 127, 209, 0.727);
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 3; 
+        color: #333;
+        text-align: left;
+    }
+
+    .major-info h4 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: var(--color); 
+        text-align: center;
+    }
+
+    .major-info h5 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+
+    .major-info p, .major-info ul {
+        font-size: 1rem;
+        color: #4a5568;
+        margin-bottom: 1rem;
+    }
+
+    .major-info li {
+        color: #4a5568;
+        font-size: 0.95rem;
+    }
+
+    .major-info .collapse-button {
+        margin-top: 25px;
+        padding: 12px 30px;
+        background: var(--color);
+        color: white;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: bold;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .major-info .collapse-button:hover {
+        opacity: 0.9;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    footer {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background-color: #212529;
+        color: white; 
+        padding: 10px 0;
+    }
+
+    footer .text-white-50 {
+        line-height: 1.6;
+        font-size: 0.875rem;
+    }
+
+    footer p,
+    footer ul li,
+    footer a,
+    .text-white-50 {
+        color:#f8fafc !important; 
+    }
+
+   
+    @media (max-width: 1024px) {
+        .majors-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            font-size: 15px;
+        }
+
+        .majors-grid {
+            grid-template-columns: 1fr;
+            padding: 10px;
+            gap: 15px;
+            margin: 3rem auto;
+        }
+
+        .major-content {
+            padding: 20px;
+        }
+
+        .major-content h3 {
+            font-size: 20px;
+        }
+
+        .major-info {
+            padding: 20px;
+        }
+
+        .major-info h4 {
+            font-size: 1.4rem;
+        }
+    }
+</style>
+<body>
+   
+     <header id="mainHeader">
+        <div class="header_logo">
+            <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+        </div>
+        <div class="header_bar">
+            <button id="menuMobile" class="menu_mobile_button"><i class="fa fa-bars"></i></button>
+            <div class="menu_mobile" id="menu_mobile">
+                <div class="menu_mobile_header">
+                    <div class="menu_mobile_logo">
+                        <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career
+                                Path</span></a>
+                    </div>
+                    <button id="closeMenuMobile" class="menu_mobile_close"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="menu_mobile_item">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="active"><a href="/advise">Tư vấn ngành</a></li>
+                    <li><a href="#">Mô tả ngành</a></li>
+                    <li><a href="#">Cộng đồng</a></li>
+                    <li><a href="">Đăng nhập</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="header_menu">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active"><a href="/advise">Tư vấn ngành</a></li>
+                <li><a href="#">Mô tả ngành</a></li>
+                <li><a href="#">Cộng đồng</a></li>
+            </ul>
+        </div>
+        <div class="logIn_signUp">
+            <button id="loginButton">
+                <a href="./login.html"><i class="fa fa-user"></i><span> Đăng nhập</span></a>
+            </button>
+        </div>
+        <div class="avartar">
+            <button class="avartarButton"><img src="/img/avartar.jpg" alt=""></button>
+            <div class="dropdown-content dropdownMenuAvartar">
+                <a href="/profile">Trang cá nhân</a>
+                <a href="./login.html" class="logout">Đăng xuất</a>
+            </div>
+            <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
+        </div>
+    </header>
+    <header id="scroll">
+        <div class="header_logo">
+            <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+        </div>
+        <div class="header_bar">
+            <button id="menuMobileScroll" class="menu_mobile_button"><i class="fa fa-bars"></i></button>
+            <div class="menu_mobile" id="menu_mobile_scroll">
+                <div class="menu_mobile_header">
+                    <div class="menu_mobile_logo">
+                        <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career
+                                Path</span></a>
+                    </div>
+                    <button id="closeMenuMobileScroll" class="menu_mobile_close"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="menu_mobile_item">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="active"><a href="#">Tư vấn ngành</a></li>
+                    <li><a href="#">Mô tả ngành</a></li>
+                    <li><a href="#">Cộng đồng</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="header_menu">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active"><a href="/advise">Tư vấn ngành</a></li>
+                <li><a href="#">Mô tả ngành</a></li>
+                <li><a href="#">Cộng đồng</a></li>
+            </ul>
+        </div>
+        <div class="logIn_signUp">
+            <button id="loginButton">
+                <a href="./login.html"><i class="fa fa-user"></i><span> Đăng nhập</span></a>
+            </button>
+        </div>
+        <div class="avartar">
+            <button class="avartarButton"><img src="/img/avartar.jpg" alt=""></button>
+            <div class="dropdown-content dropdownMenuAvartar">
+                <a href="/profile">Trang cá nhân</a>
+                <a href="/login" class="logout">Đăng xuất</a>
+            </div>
+            <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
+        </div>
+    </header>
+    <div class="majors-grid">
+        <div class="major-item it" id="it" style="--color: #3b82f6">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Công Nghệ Thông Tin</h3>
+                <div class="major-details">
+                    <p>Ngành học của thời đại số, nơi sáng tạo và logic hòa quyện để tạo nên những giải pháp công nghệ đột
+                        phá...</p>
+                    <button class="discover-button" data-target="it-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="it-info">
+                <h4>Thông tin chi tiết về ngành Công Nghệ Thông Tin</h4>
+                <p>Công nghệ thông tin (CNTT) là một lĩnh vực rộng lớn, bao gồm phần cứng, phần mềm, mạng máy tính và hệ
+                    thống thông tin. Sinh viên ngành CNTT sẽ được trang bị kiến thức về lập trình, cơ sở dữ liệu, phát triển
+                    ứng dụng web và di động, an ninh mạng, trí tuệ nhân tạo (AI), và nhiều lĩnh vực khác.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+
+                    <li>Lập trình viên (Web, Mobile, Desktop)</li>
+                    <li>Kỹ sư phần mềm</li>
+                    <li>Chuyên gia phân tích hệ thống</li>
+                    <li>Chuyên gia bảo mật thông tin</li>
+                    <li>Quản trị dự án CNTT</li>
+                    <li>Chuyên viên AI và Machine Learning</li>
+                </ul>
+                <button class="collapse-button" data-target="it-info" data-parent="it">Thu gọn</button>
+            </div>
+        </div>
+
+        <div class="major-item accounting" id="accounting" style="--color: #10b981">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-calculator"></i>
+                <h3>Kế Toán</h3>
+                <div class="major-details">
+                    <p>Ngôn ngữ của doanh nghiệp, nơi mọi con số đều biết nói. Kế toán không chỉ là công việc ghi chép mà
+                        là nghệ thuật phân tích...</p>
+                    <button class="discover-button" data-target="accounting-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="accounting-info">
+                <h4>Thông tin chi tiết về ngành Kế Toán</h4>
+                <p>Kế toán là quá trình thu thập, xử lý, phân tích và báo cáo thông tin tài chính. Ngành kế toán đóng vai trò
+                    quan trọng trong việc quản lý tài chính của mọi tổ chức, từ doanh nghiệp nhỏ đến tập đoàn lớn. Sinh viên
+                    ngành kế toán sẽ được học về nguyên lý kế toán, chuẩn mực kế toán, phân tích báo cáo tài chính, kiểm toán,
+                    thuế và quản trị chi phí.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+                    <li>Kế toán viên</li>
+                    <li>Kiểm toán viên</li>
+                    <li>Chuyên viên phân tích tài chính</li>
+                    <li>Chuyên viên thuế</li>
+                    <li>Quản lý tài chính</li>
+                    <li>Kế toán trưởng</li>
+                </ul>
+                <button class="collapse-button" data-target="accounting-info" data-parent="accounting">Thu gọn</button>
+            </div>
+        </div>
+
+        <div class="major-item business" id="business" style="--color: #f59e0b">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-briefcase"></i>
+                <h3>Quản Trị Kinh Doanh</h3>
+                <div class="major-details">
+                    <p>Ngành học dành cho những nhà lãnh đạo tương lai, nơi bạn được trang bị kiến thức toàn diện về quản lý,
+                        chiến lược...</p>
+                    <button class="discover-button" data-target="business-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="business-info">
+                <h4>Thông tin chi tiết về ngành Quản Trị Kinh Doanh</h4>
+                <p>Quản trị kinh doanh (QTKD) là ngành học về quản lý và điều hành một tổ chức hoặc doanh nghiệp. Sinh viên
+                    ngành QTKD sẽ được học về các chức năng quản lý (hoạch định, tổ chức, lãnh đạo, kiểm soát), marketing, tài
+                    chính, nhân sự, và quản lý chuỗi cung ứng.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+                    <li>Chuyên viên quản lý</li>
+                    <li>Giám đốc điều hành</li>
+                    <li>Quản lý dự án</li>
+                    <li>Chuyên viên kinh doanh</li>
+                    <li>Chuyên viên marketing</li>
+                    <li>Chuyên viên nhân sự</li>
+                </ul>
+                <button class="collapse-button" data-target="business-info" data-parent="business">Thu gọn</button>
+            </div>
+        </div>
+
+        <div class="major-item marketing" id="marketing" style="--color: #8b5cf6">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Marketing</h3>
+                <div class="major-details">
+                    <p>Nghệ thuật kết nối sản phẩm với trái tim người tiêu dùng. Marketing hiện đại là sự kết hợp giữa sáng
+                        tạo và công nghệ...</p>
+                    <button class="discover-button" data-target="marketing-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="marketing-info">
+                <h4>Thông tin chi tiết về ngành Marketing</h4>
+                <p>Marketing là quá trình tạo ra, truyền đạt, cung cấp và trao đổi các sản phẩm có giá trị cho khách hàng, đối
+                    tác và xã hội nói chung. Ngành marketing bao gồm nghiên cứu thị trường, xây dựng thương hiệu, quảng cáo,
+                    quan hệ công chúng, marketing kỹ thuật số và quản lý bán hàng.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+                    <li>Chuyên viên marketing</li>
+                    <li>Chuyên viên digital marketing</li>
+                    <li>Chuyên viên quảng cáo</li>
+                    <li>Chuyên viên quan hệ công chúng</li>
+                    <li>Quản lý thương hiệu</li>
+                    <li>Chuyên viên nghiên cứu thị trường</li>
+                </ul>
+                <button class="collapse-button" data-target="marketing-info" data-parent="marketing">Thu gọn</button>
+            </div>
+        </div>
+
+        <div class="major-item english" id="english" style="--color: #06b6d4">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-language"></i>
+                <h3>Ngôn Ngữ Anh</h3>
+                <div class="major-details">
+                    <p>Chìa khóa mở cửa toàn cầu hóa. Ngôn ngữ Anh không chỉ dừng lại ở việc học tiếng mà còn là nghiên cứu
+                        văn hóa...</p>
+                    <button class="discover-button" data-target="english-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="english-info">
+                <h4>Thông tin chi tiết về ngành Ngôn Ngữ Anh</h4>
+                <p>Ngôn ngữ Anh là ngành học về tiếng Anh và văn hóa của các quốc gia nói tiếng Anh. Sinh viên ngành ngôn
+                    ngữ Anh sẽ được học về ngữ pháp, từ vựng, phát âm, các kỹ năng nghe, nói, đọc, viết, dịch thuật, và văn học
+                    Anh - Mỹ.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+                    <li>Biên dịch viên</li>
+                    <li>Phiên dịch viên</li>
+                    <li>Giáo viên tiếng Anh</li>
+                    <li>Chuyên viên đối ngoại</li>
+                    <li>Trợ lý đối ngoại</li>
+                    <li>Chuyên viên truyền thông quốc tế</li>
+                </ul>
+                <button class="collapse-button" data-target="english-info" data-parent="english">Thu gọn</button>
+            </div>
+        </div>
+
+        <div class="major-item media" id="media" style="--color: #ef4444">
+            <div class="major-overlay"></div>
+            <div class="major-content">
+                <i class="fas fa-film"></i>
+                <h3>Truyền Thông Đa Phương Tiện</h3>
+                <div class="major-details">
+                    <p>Ngành học của sự sáng tạo không giới hạn, nơi công nghệ gặp gỡ nghệ thuật để kể những câu chuyện hấp
+                        dẫn...</p>
+                    <button class="discover-button" data-target="media-info">Khám phá</button>
+                </div>
+            </div>
+            <div class="major-info" id="media-info">
+                <h4>Thông tin chi tiết về ngành Truyền Thông Đa Phương Tiện</h4>
+                <p>Truyền thông đa phương tiện là ngành học về việc sử dụng các phương tiện truyền thông khác nhau (văn bản,
+                    hình ảnh, âm thanh, video, hoạt hình, tương tác) để truyền tải thông điệp đến khán giả. Sinh viên ngành
+                    truyền thông đa phương tiện sẽ được học về thiết kế đồ họa, dựng phim, sản xuất âm thanh, thiết kế web,
+                    animation và storytelling.</p>
+                <h5>Cơ hội nghề nghiệp:</h5>
+                <ul>
+                    <li>Nhà thiết kế đồ họa</li>
+                    <li>Biên tập video</li>
+                    <li>Nhà sản xuất âm thanh</li>
+                    <li>Thiết kế web</li>
+                    <li>Animator</li>
+                    <li>Chuyên viên truyền thông</li>
+                </ul>
+                <button class="collapse-button" data-target="media-info" data-parent="media">Thu gọn</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container">
+          <div class="row g-5">
+            <!-- VKU Info -->
+            <div class="col-md-3">
+              <img src="../img/logon-removebg-preview.png" alt="" style="width: 100px; transform: translateY(-30px);">
+              <p class="text-white-50 small " style="transform: translateY(-30px);">
+                Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn (VKU)
+                là trường đại học công lập trực thuộc Đại học Đà Nẵng.
+              </p>
+            </div>
+    
+            <!-- Liên hệ -->
+            <div class="col-md-3">
+              <h5 class="fw-bold mb-3">🤝 Liên hệ</h5>
+              <ul class="list-unstyled text-white-50 small">
+                <li class="d-flex mb-2 align-items-start">
+                  <i class="fas fa-map-marker-alt me-2 text-warning mt-1"></i>
+                  <span>470 Trần Đại Nghĩa, Hòa Quý, Ngũ Hành Sơn, Đà Nẵng</span>
+                </li>
+                <li class="d-flex mb-2 align-items-center">
+                  <i class="fas fa-phone-alt me-2 text-warning"></i>
+                  <span>0236.6.552.688</span>
+                </li>
+                <li class="d-flex align-items-center">
+                  <i class="fas fa-envelope me-2 text-warning"></i>
+                  <span>tuyensinh@vku.udn.vn</span>
+                </li>
+              </ul>
+            </div>
+    
+            <!-- Hỗ trợ -->
+            <div class="col-md-3">
+              <h5 class="fw-bold mb-3">🔧 Hỗ trợ</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Câu hỏi
+                    thường gặp</a>
+                </li>
+                <li><a href="https://www.facebook.com/olam.333246"
+                    class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Hướng dẫn
+                    sử dụng</a>
+                </li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Chính sách
+                    bảo mật</a>
+                </li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block py-1 hover-opacity">Điều khoản
+                    dịch vụ</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Kết nối -->
+            <div class="col-md-3">
+              <h5 class="fw-bold mb-3">🌐 Kết nối với chúng tôi</h5>
+              <div class="d-flex mb-3">
+                <a href="https://www.facebook.com/vku.udn.vn" class="btn btn-outline-light btn-sm rounded-circle me-2"
+                  style="border-color:#3b5998; color:#3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/vku_udn_vn" class="btn btn-outline-light btn-sm rounded-circle me-2"
+                  style="border-color:#1DA1F2; color:#1DA1F2;"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@tuoitrevku" class="btn btn-outline-light btn-sm rounded-circle me-2"
+                  style="border-color:#FF0000; color:#FF0000;"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/vku.udn.vn/" class="btn btn-outline-light btn-sm rounded-circle"
+                  style="border-color:#C13584; color:#C13584;"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+    
+          <hr class="border-secondary mt-0">
+    
+          <div class="text-center text-white-50 mt-3 small">
+            <p>© 2025 Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn. Dù bạn là ai, bạn ở nơi nào
+              chúng tôi
+              luôn đồng hành cùng bạn.</p>
+          </div>
+        </div>
+      </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="../js/advise.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            const majorItems = document.querySelectorAll('.major-item');
+            majorItems.forEach(item => {
+                const discoverButton = item.querySelector('.discover-button');
+                const collapseButton = item.querySelector('.collapse-button');
+                const majorContent = item.querySelector('.major-content');
+                const majorInfo = item.querySelector('.major-info');
+                const majorContentTitle = item.querySelector('.major-content h3');
+                const majorContentIcon = item.querySelector('.major-content i');
+
+
+                item.addEventListener('mouseenter', function() {
+                    majorContentTitle.style.opacity = '0';
+                    majorContentTitle.style.transform = 'translateY(-20px)';
+                    majorContentIcon.style.opacity = '0';
+                    majorContentIcon.style.transform = 'translateY(-20px)';
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    if (majorInfo.style.display !== 'block') {
+                        majorContentTitle.style.opacity = '1';
+                        majorContentTitle.style.transform = 'translateY(0)';
+                        majorContentIcon.style.opacity = '1';
+                        majorContentIcon.style.transform = 'translateY(0)';
+                    }
+                });
+
+
+                if (discoverButton) {
+                    discoverButton.addEventListener('click', function () {
+                        majorContent.style.display = 'none';
+                        majorInfo.style.display = 'block'; 
+                        majorInfo.style.zIndex = '3';
+                        majorContentTitle.style.opacity = '0';
+                        majorContentIcon.style.opacity = '0';
+                    });
+                }
+
+                if (collapseButton) {
+                    collapseButton.addEventListener('click', function () {
+                        majorInfo.style.display = 'none';
+                        majorContent.style.display = 'flex'; 
+                        majorInfo.style.zIndex = 'auto';
+                        majorContentTitle.style.opacity = '1';
+                        majorContentTitle.style.transform = 'translateY(0)';
+                        majorContentIcon.style.opacity = '1';
+                        majorContentIcon.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+            const mainHeader = document.getElementById('mainHeader');
+            const scrollHeader = document.getElementById('scroll');
+            const menuMobile = document.getElementById('menuMobile');
+            const closeMenuMobile = document.getElementById('closeMenuMobile');
+            const menuMobileScroll = document.getElementById('menuMobileScroll');
+            const closeMenuMobileScroll = document.getElementById('closeMenuMobileScroll');
+            const menuMobileContent = document.getElementById('menu_mobile');
+            const menuMobileContentScroll = document.getElementById('menu_mobile_scroll');
+            const avatarButton = document.querySelector('.avartarButton');
+            const dropdownMenuAvartar = document.querySelector('.dropdownMenuAvartar');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 0) {
+                    mainHeader.style.display = 'none';
+                    scrollHeader.style.display = 'flex';
+                } else {
+                    mainHeader.style.display = 'flex';
+                    scrollHeader.style.none = 'none';
+                }
+            });
+
+            menuMobile.addEventListener('click', () => {
+                menuMobileContent.style.display = 'flex';
+            });
+
+            closeMenuMobile.addEventListener('click', () => {
+                menuMobileContent.style.display = 'none';
+            });
+
+            menuMobileScroll.addEventListener('click', () => {
+                menuMobileContentScroll.style.display = 'flex';
+            });
+
+            closeMenuMobileScroll.addEventListener('click', () => {
+                menuMobileContentScroll.style.display = 'none';
+            });
+
+            avatarButton.addEventListener('click', () => {
+                dropdownMenuAvartar.classList.toggle('show');
+            });
+
+            window.onclick = function (event) {
+                if (!event.target.matches('.avartarButton') && !event.target.closest('.avartarButton')) {
+                    if (dropdownMenuAvartar.classList.contains('show')) {
+                        dropdownMenuAvartar.classList.remove('show');
+                    }
+                }
+            };
+
+        });
+    </script>
+</body>
+
+</html>
