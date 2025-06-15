@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const username = localStorage.getItem('username');
-  
   // Select ALL elements with these classes instead of just the first one
   const loginButtons = document.querySelectorAll('.logIn_signUp');
   const avatarDivs = document.querySelectorAll('.avartar');

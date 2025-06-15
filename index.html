@@ -38,17 +38,17 @@
           <li class="active"><a href="#">Trang chủ</a></li>
           <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
           <li><a href="./public/html/industry.html">Mô tả ngành</a></li>
-          <li><a href="#">Cộng đồng</a></li>
+          <li><a href="./public/html/comunity.html">Cộng đồng</a></li>
           <li><a href="./public/html/login.html">Đăng nhập</a></li>
         </div>
       </div>
     </div>
     <div class="header_menu">
       <ul>
-        <li class="active"><a href="#">Trang chủ</a></li>
+        <li class="active"><a href="/">Trang chủ</a></li>
         <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
         <li><a href="./public/html/industry.html">Mô tả ngành</a></li>
-        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="./public/html/comunity.html">Cộng đồng</a></li>
       </ul>
     </div>
     <div class="logIn_signUp">
@@ -59,7 +59,6 @@
     <div class="avartar">
       <button class="avartarButton"><img src="./public/img/avartar.jpg" alt=""></button>
       <div class="dropdown-content dropdownMenuAvartar">
-        <a href="./public/html/profile.html">Trang cá nhân</a>
         <a href="" class="logout">Đăng xuất</a>
       </div>
       <span class="userName"></span>
@@ -81,7 +80,8 @@
         <div class="menu_mobile_item">
           <li class="active"><a href="/">Trang chủ</a></li>
           <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
-          <li><a href="./public/html/industry.html">Mô tả ngành</a></li>          <li><a href="#">Cộng đồng</a></li>
+          <li><a href="./public/html/industry.html">Mô tả ngành</a></li>
+          <li><a href="./public/html/comunity.html">Cộng đồng</a></li>
           <li><a href="./public/html/login.html">Đăng Nhập</a></li>
         </div>
       </div>
@@ -91,7 +91,7 @@
         <li class="active"><a href="#">Trang chủ</a></li>
         <li><a href="./public/html/advise.html">Tư vấn ngành</a></li>
         <li><a href="./public/html/industry.html">Mô tả ngành</a></li>
-        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="./public/html/comunity.html">Cộng đồng</a></li>
       </ul>
     </div>
     <div class="logIn_signUp">
@@ -102,7 +102,6 @@
     <div class="avartar">
       <button class="avartarButton"><img src="./public/img/avartar.jpg" alt=""></button>
       <div class="dropdown-content dropdownMenuAvartar">
-        <a href="./public/html/profile.html">Trang cá nhân</a>
         <a href="./public/html/login.html" class="logout">Đăng xuất</a>
       </div>
       <span class="userName"></span>
@@ -523,5 +522,10 @@
   <script src="/public/JavaScript/effect.js"></script>
   <script src="/public/JavaScript/header.js"></script>
   <script src="/public/JavaScript/checkLoginStatus.js"></script>
+  <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+<script>
+  const tudong_chatbox = new TuDongChat('vBzNMpKftmnipPPh_W6nN')
+  tudong_chatbox.initial()
+</script>
 </body>
 </html>

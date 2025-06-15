@@ -8,7 +8,6 @@ document.getElementById('submitRegister').addEventListener('click', function(eve
   const pass1 = document.querySelector('.pass1-field').value.trim();
   const pass2 = document.querySelector('.pass2-field').value.trim();
 
-  const showError = (msg) => alert(msg);
 
   if (!name) return showError("Vui lòng nhập tên người dùng");
   if (!email) return showError("Vui lòng nhập email");
@@ -25,7 +24,7 @@ document.getElementById('submitRegister').addEventListener('click', function(eve
   // Lưu thông tin tạm thời
   registeredUser = { name, email, password: pass1 };
 
-  alert("Đăng ký thành công, vui lòng đăng nhập");
+  showSuccess("Đăng ký thành công, vui lòng đăng nhập");
   console.log(registeredUser);
 });
 
@@ -34,8 +33,6 @@ document.getElementById('submitLogin').addEventListener('click', function(event)
 
   const emailLogin = document.querySelector('.emailLogin-field').value.trim();
   const passLogin = document.querySelector('.passwordLogin-field').value.trim();
-
-  const showError = (msg) => alert(msg);
 
   if (!emailLogin) return showError("Vui lòng nhập email");
   if (!validateEmail(emailLogin)) return showError("Email sai định dạng");
@@ -47,9 +44,6 @@ document.getElementById('submitLogin').addEventListener('click', function(event)
   ) {
     return showError("Email hoặc mật khẩu không đúng");
   }
-
-  alert("Đăng nhập thành công");
-
 // Store login information in localStorage
 localStorage.setItem('isLoggedIn', 'true');
 localStorage.setItem('username', registeredUser.name);
@@ -65,4 +59,26 @@ function validateEmail(email) {
 function validatePassword(password) {
   const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
   return re.test(password);
+}
+function showError(message) {
+        return Swal.fire({
+            title: 'Lỗi!',
+            text: message || 'Đã xảy ra lỗi. Vui lòng thử lại.',
+            icon: 'error',
+            confirmButtonText: 'Đóng',
+            confirmButtonColor: '#d33',
+            timer: 3000,
+            timerProgressBar: true
+        });
+}
+function showSuccess(message) {
+    return Swal.fire({
+        title: 'Thành công!',
+        text: message || 'Thao tác thành công.',
+        icon: 'success',
+        confirmButtonText: 'Đóng',
+        confirmButtonColor: '#3085d6',
+        timer: 3000,
+        timerProgressBar: true
+    });
 }

@@ -14,6 +14,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/sweetalert2/sweetalert2.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/sweetalert2/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../css/advise.css">
 
@@ -36,19 +37,19 @@
                 </div>
                 <div class="menu_mobile_item">
                     <li><a href="/">Trang chủ</a></li>
-                    <li class="active"><a href="/advise">Tư vấn ngành</a></li>
-                    <li><a href="#">Mô tả ngành</a></li>
-                    <li><a href="#">Cộng đồng</a></li>
-                    <li><a href="">Đăng nhập</a></li>
+                    <li class="active"><a href="./advise.html">Tư vấn ngành</a></li>
+                    <li><a href="./industry.html">Mô tả ngành</a></li>
+                    <li><a href="./comunity.html">Cộng đồng</a></li>
+                    <li><a href="./login.html">Đăng nhập</a></li>
                 </div>
             </div>
         </div>
         <div class="header_menu">
             <ul>
                 <li><a href="/">Trang chủ</a></li>
-                <li class="active"><a href="/advise">Tư vấn ngành</a></li>
-                <li><a href="#">Mô tả ngành</a></li>
-                <li><a href="#">Cộng đồng</a></li>
+                <li class="active"><a href="./advise.html">Tư vấn ngành</a></li>
+                <li><a href="./industry.html">Mô tả ngành</a></li>
+                <li><a href="./comunity.html">Cộng đồng</a></li>
             </ul>
         </div>
         <div class="logIn_signUp">
@@ -57,10 +58,9 @@
             </button>
         </div>
         <div class="avartar">
-            <button class="avartarButton"><img src="/img/avartar.jpg" alt=""></button>
+            <button class="avartarButton"><img src="../img/avartar.jpg" alt=""></button>
             <div class="dropdown-content dropdownMenuAvartar">
-                <a href="/profile">Trang cá nhân</a>
-                <a href="./login.html" class="logout">Đăng xuất</a>
+                <a href="" class="logout">Đăng xuất</a>
             </div>
             <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
         </div>
@@ -81,18 +81,18 @@
                 </div>
                 <div class="menu_mobile_item">
                     <li><a href="/">Trang chủ</a></li>
-                    <li class="active"><a href="#">Tư vấn ngành</a></li>
-                    <li><a href="#">Mô tả ngành</a></li>
-                    <li><a href="#">Cộng đồng</a></li>
+                    <li class="active"><a href="./advise.html">Tư vấn ngành</a></li>
+                    <li><a href="./industry.html">Mô tả ngành</a></li>
+                    <li><a href="./comunity.html">Cộng đồng</a></li>
                 </div>
             </div>
         </div>
         <div class="header_menu">
             <ul>
                 <li><a href="/">Trang chủ</a></li>
-                <li class="active"><a href="/advise">Tư vấn ngành</a></li>
-                <li><a href="#">Mô tả ngành</a></li>
-                <li><a href="#">Cộng đồng</a></li>
+                <li class="active"><a href="./advise.html">Tư vấn ngành</a></li>
+                <li><a href="./industry.html">Mô tả ngành</a></li>
+                <li><a href="./comunity.html">Cộng đồng</a></li>
             </ul>
         </div>
         <div class="logIn_signUp">
@@ -101,9 +101,8 @@
             </button>
         </div>
         <div class="avartar">
-            <button class="avartarButton"><img src="/img/avartar.jpg" alt=""></button>
+            <button class="avartarButton"><img src="../img/avartar.jpg" alt=""></button>
             <div class="dropdown-content dropdownMenuAvartar">
-                <a href="/profile">Trang cá nhân</a>
                 <a href="/login" class="logout">Đăng xuất</a>
             </div>
             <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
@@ -304,40 +303,12 @@
                     </div>
                 </section>
 
-                <!-- Chatbot & Lịch tư vấn -->
+                <!--  Lịch tư vấn -->
                 <aside class="col-md-6 d-flex flex-column">
-                    <!-- Chatbot -->
-                    <div class="card p-3 mb-1 shadow-sm chatbox">
-                        <!-- Chatbox -->
-                        <div class="chatbox">
-                            <div class="chat-header">
-                                <div class="header-info">
-                                    <h2 class="logo-text"><i class="fas fa-robot"></i> Chatbot</h2>
-                                </div>
-                            </div>
-                            <div class="chat-body">
-                                <div class="message bot-message">
-                                    <div class="avatar"><i class="fas fa-robot"></i></div>
-                                    <div class="content">
-                                          <p>Xin chào! Tôi là Chatbot, sẵn sàng hỗ trợ bạn.</p>
-                                        <p>Bạn cần tư vấn ?👉<a href="/Giangvien">Xem danh sách chuyên gia tại đây</a></p>
-                                    </div>
-                            
-                                </div>
-                            </div>
-                            <div class="chat-footer">
-                                <div class="d-flex">
-                                    <input type="text" class="form-control" placeholder="Nhập tin nhắn...">
-                                    <button class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Lịch tư vấn định kỳ -->
-                    <div class="card p-4 flex-grow-1 shadow-sm">
+                    <div class="card p-4 flex-grow-1 h-100 shadow-sm">
                         <h5 class="fw-bold text-dark mb-3">Lịch Tư Vấn</h5>
-                        <div class="overflow-auto" style="max-height: 220px;">
+                        <div class="overflow-auto" >
                             <div class="d-flex align-items-start mb-3 bg-primary-subtle rounded p-2">
                                 <div class="badge bg-primary text-white me-3">Thứ 2</div>
                                 <div>
@@ -386,112 +357,42 @@
 
 
         <!-- so sánh ngành b4 -->
-        <article id="step-4" class="step-content" role="tabpanel" aria-labelledby="step4-tab">
-            <section class="max-w-4xl mx-auto bg-gray-50 p-6 rounded-xl shadow-sm mb-8">
-                <div class="grid md:grid-cols-2 gap-4 mb-6">
-                    <div>
-                        <label for="program1" class="block text-gray-700 font-medium mb-2">Ngành thứ nhất</label>
-                        <select id="program1"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="">-- Chọn ngành --</option>
-                            <option value="cntt">Công nghệ Thông tin</option>
-                            <option value="kt">Kế toán</option>
-                            <option value="qtkd">Quản trị Kinh doanh</option>
-                            <option value="mkt">Marketing</option>
-                            <option value="nn">Ngôn ngữ Anh</option>
-                            <option value="truyen-thong">Truyền thông Đa phương tiện</option>
+         <div id="step-4" class="step-content">
+                <div class="comparison-section">
+                    <div class="compare-controls">
+                        <select id="compare-select-1">
+                            <option value="">Chọn ngành 1</option>
+                            <!-- <option value="CNTT">Công nghệ Thông tin</option>
+                        <option value="AI">Trí tuệ Nhân tạo</option>
+                        <option value="ATTT">An toàn Thông tin</option>
+                        <option value="KT">Kế toán</option> -->
+                        </select>
+
+                        <select id="compare-select-2">
+                            <option value="">Chọn ngành 2</option>
+                            <!-- <option value="CNTT">Công nghệ Thông tin</option>
+                        <option value="AI">Trí tuệ Nhân tạo</option>
+                        <option value="ATTT">An toàn Thông tin</option>
+                        <option value="KT">Kế toán</option> -->
                         </select>
                     </div>
-                    <div>
-                        <label for="program2" class="block text-gray-700 font-medium mb-2">Ngành thứ hai</label>
-                        <select id="program2"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="">-- Chọn ngành --</option>
-                            <option value="cntt">Công nghệ Thông tin</option>
-                            <option value="kt">Kế toán</option>
-                            <option value="qtkd">Quản trị Kinh doanh</option>
-                            <option value="mkt">Marketing</option>
-                            <option value="nn">Ngôn ngữ Anh</option>
-                            <option value="truyen-thong">Truyền thông Đa phương tiện</option>
-                        </select>
-                    </div>
-                </div>
-                <button id="compare-btn"
-                    class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition">So Sánh
-                    Ngay</button>
-            </section>
 
-            <section id="comparison-result" class="hidden max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-sm fade-in"
-                aria-live="polite">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-bold text-gray-800">Kết Quả So Sánh</h3>
-                    <div class="flex space-x-2">
-                        <button class="text-blue-600 hover:text-blue-800 flex items-center">
-                            <i class="fas fa-download mr-1"></i> Tải PDF
-                        </button>
-                        <button class="text-blue-600 hover:text-blue-800 flex items-center">
-                            <i class="fas fa-share-alt mr-1"></i> Chia sẻ
-                        </button>
+                    <div id="comparison-warning" class="comparison-warning">
+                        Vui lòng chọn đủ 2 ngành để so sánh
                     </div>
-                </div>
 
-                <div class="overflow-x-auto">
-                    <table class="comparison-table w-full rounded-lg overflow-hidden">
+                    <table id="comparison-table" class="comparison-table">
                         <thead>
                             <tr>
-                                <th class="text-left">Tiêu chí</th>
-                                <th id="program1-title" class="text-center w-1/3">Ngành 1</th>
-                                <th id="program2-title" class="text-center w-1/3">Ngành 2</th>
+                                <th>Tiêu chí</th>
+                                <th>Ngành 1</th>
+                                <th>Ngành 2</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-medium">Cơ hội việc làm</td>
-                                <td id="program1-jobs" class="text-center"></td>
-                                <td id="program2-jobs" class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Mức lương khởi điểm</td>
-                                <td id="program1-salary" class="text-center"></td>
-                                <td id="program2-salary" class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Kỹ năng yêu cầu</td>
-                                <td id="program1-skills" class="text-center"></td>
-                                <td id="program2-skills" class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Thời gian đào tạo</td>
-                                <td id="program1-duration" class="text-center"></td>
-                                <td id="program2-duration" class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Thế mạnh tại VKU</td>
-                                <td id="program1-strengths" class="text-center"></td>
-                                <td id="program2-strengths" class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Đánh giá từ cựu sinh viên</td>
-                                <td id="program1-reviews" class="text-center"></td>
-                                <td id="program2-reviews" class="text-center"></td>
-                            </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
-
-                <div id="ai-recommendation" class="mt-8 p-4 bg-blue-50 rounded-lg hidden">
-                    <div class="flex items-start">
-                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                            <i class="fas fa-robot text-blue-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Đề xuất từ AI</h4>
-                            <p id="ai-recommendation-text" class="text-gray-700"></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </article>
+            </div>
 
         <!-- kq b5 -->
         <article id="step-5" class="step-content" role="tabpanel" aria-labelledby="step5-tab">
@@ -647,6 +548,12 @@
       </footer>
     <script src="../JavaScript/advise.js"></script>
     <script src="../JavaScript/header.js"></script>
-    <script src="../JavaScript/chatbot.js"></script>
+    <script src="../JavaScript/checkLoginStatus.js"></script>
+    <script src="../JavaScript/compareMajor.js"></script>
+    <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+<script>
+  const tudong_chatbox = new TuDongChat('vBzNMpKftmnipPPh_W6nN')
+  tudong_chatbox.initial()
+</script>
 </body>
 </html>

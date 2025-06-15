@@ -1,3 +1,4 @@
+
 // qua lại các bước
 function goToStep(step) {
   const steps = document.querySelectorAll(".step-content");
@@ -833,10 +834,11 @@ function renderHollandGroup() {
       ${q.options
         .map(
           (opt, i) => `
-        <td class="text-center">
+        <td class="text-center cursor-pointer hover:bg-blue-100" onclick="selectRadio(${q.id}, ${opt.value})">
           <input type="radio" name="q${q.id}" value="${opt.value}" ${
             hollandAnswers[group.code]?.[q.id] == opt.value ? "checked" : ""
           }>
+          <span class="block text-sm">${opt.text}</span>
         </td>
       `
         )
@@ -852,7 +854,14 @@ function renderHollandGroup() {
       ? "Hoàn thành"
       : "Tiếp tục";
 }
-
+function selectRadio(questionId, value) {
+  const radio = document.querySelector(
+    `input[name="q${questionId}"][value="${value}"]`
+  );
+  if (radio) {
+    radio.checked = true;
+  }
+}
 // 4. Validate và lưu đáp án nhóm
 function validateAndSaveHollandGroup() {
   const group = hollandGroups[hollandCurrentGroup];
@@ -870,7 +879,12 @@ function validateAndSaveHollandGroup() {
 function setupHollandNav() {
   document.getElementById("holland-next-btn").onclick = function () {
     if (!validateAndSaveHollandGroup()) {
-      alert("Bạn cần trả lời tất cả câu hỏi!");
+     Swal.fire({
+        title: "Thông báo",
+        text: "Bạn cần trả lời tất cả câu hỏi!",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
     if (hollandCurrentGroup < hollandGroups.length - 1) {
@@ -915,62 +929,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const testIntro = document.getElementById("test-intro");
     const testQuestions = document.getElementById("test-questions");
 
-    if (startTestBtn) {
-        startTestBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("Start test button clicked");
+  if (startTestBtn) {
+    startTestBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log("Start test button clicked");
 
-            // Call the check-login API
-            fetch("/check-login", {
-                method: "GET",
-                credentials: "include" // Include session cookies
-            })
-                .then((response) => {
-                    console.log("Response status:", response.status); // Debug status
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    console.log("Response data:", data); // Debug response
-                    if (data.loggedIn) {
-                        // User is logged in, proceed to the test
-                        goToStep(2);
-                        if (testIntro && testQuestions) {
-                            testIntro.classList.add("hidden");
-                            testQuestions.classList.remove("hidden");
-                            hollandCurrentGroup = 0;
-                            hollandAnswers = {};
-                            renderHollandGroup();
-                            setupHollandNav();
-                        } else {
-                            console.error("Test intro or questions elements not found");
-                        }
-                    } else {
-                        // User is not logged in, show SweetAlert
-                        Swal.fire({
-                            title: "Yêu cầu đăng nhập",
-                            text: "Bạn phải đăng nhập để làm bài kiểm tra.",
-                            icon: "error",
-                            confirmButtonText: "OK",
-                            allowOutsideClick: false,
-                        });
-                    }
-                })
-                .catch((error) => {
-                    console.error("Error checking login status:", error.message);
-                    Swal.fire({
-                        title: "Lỗi",
-                        text: "Đã xảy ra lỗi khi kiểm tra trạng thái đăng nhập. Vui lòng thử lại.",
-                        icon: "error",
-                        confirmButtonText: "OK",
-                        allowOutsideClick: false,
-                    });
-                });
-        });
-    }
+        // Check login status from localStorage
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        console.log("Login status from localStorage:", isLoggedIn);
 
+        if (isLoggedIn) {
+            // User is logged in, proceed to the test
+            goToStep(2);
+            if (testIntro && testQuestions) {
+                testIntro.classList.add("hidden");
+                testQuestions.classList.remove("hidden");
+                hollandCurrentGroup = 0;
+                hollandAnswers = {};
+                renderHollandGroup();
+                setupHollandNav();
+            } else {
+                console.error("Test intro or questions elements not found");
+            }
+        } else {
+            // User is not logged in, show SweetAlert
+            Swal.fire({
+                title: "Yêu cầu đăng nhập",
+                text: "Bạn phải đăng nhập để làm bài kiểm tra.",
+                icon: "error",
+                confirmButtonText: "OK",
+                allowOutsideClick: false,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to login page
+                    window.location.href = "./login.html";
+                }
+            });
+        }
+    });
+}
     // Retake test button
     const retakeBtn = document.getElementById("retake-btn");
     if (retakeBtn) {

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKU Career Path - Cộng Đồng</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/comunity.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="header_logo">
+            <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career Path</span></a>
+        </div>
+        <div class="header_bar">
+            <button id="menuMobile" class="menu_mobile_button"><i class="fa fa-bars"></i></button>
+            <div class="menu_mobile" id="menu_mobile">
+                <div class="menu_mobile_header">
+                    <div class="menu_mobile_logo">
+                        <a href="#"><img src="../img/logon-removebg-preview.png" alt="VKU Logo"><span>VKU Career
+                                Path</span></a>
+                    </div>
+                    <button id="closeMenuMobile" class="menu_mobile_close"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="menu_mobile_item">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li ><a href="./advise.html">Tư vấn ngành</a></li>
+                    <li><a href="./industry.html">Mô tả ngành</a></li>
+                    <li class="active"><a href="">Cộng đồng</a></li>
+                    <li><a href="./login.html">Đăng nhập</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="header_menu">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="./advise.html">Tư vấn ngành</a></li>
+                <li><a href="./industry.html">Mô tả ngành</a></li>
+                <li class="active"><a href="#">Cộng đồng</a></li>
+            </ul>
+        </div>
+        <div class="logIn_signUp">
+            <button id="loginButton">
+                <a href="./login.html"><i class="fa fa-user"></i><span> Đăng nhập</span></a>
+            </button>
+        </div>
+        <div class="avartar">
+            <button class="avartarButton"><img src="../img/avartar.jpg" alt=""></button>
+            <div class="dropdown-content dropdownMenuAvartar">
+                <a href="" class="logout">Đăng xuất</a>
+            </div>
+            <span class="userName" data-name="<%= user ? user.name : '' %>"></span>
+        </div>
+    </header>
+    <!-- Main container -->
+    <div class="container-fluid community-container">
+        <div class="row">
+            <!-- Left Sidebar -->
+            <div class="col-md-3 col-lg-2 community-sidebar">
+                <div class="sidebar-inner">
+                    <div class="sidebar-header">
+                        <h3>Cộng Đồng</h3>
+                    </div>
+
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="#">
+                                <i class="fas fa-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-users"></i>
+                                <span>Nhóm</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-comment-alt"></i>
+                                <span>Tin nhắn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-bell"></i>
+                                <span>Thông báo</span>
+                                <span class="notification-badge">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Sự kiện</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-7 community-content">
+                <!-- Create Post -->
+                <div class="create-post">
+                    <div class="create-post-header">
+                        <a href="./profile.html"><img src="../img/avartar.jpg" alt="User" class="avatar"></a>
+                        <div class="create-post-input" id="open-post-modal">
+                            <span>Bạn đang nghĩ gì?</span>
+                        </div>
+                    </div>
+                    <div class="create-post-actions">
+                        <button class="post-action-btn">
+                            <i class="fas fa-image"></i>
+                            <span>Ảnh/Video</span>
+                        </button>
+                        <button class="post-action-btn">
+                            <i class="fas fa-smile"></i>
+                            <span>Cảm xúc</span>
+                        </button>
+                        <button class="post-action-btn">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Check in</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feed Filter -->
+                <div class="feed-filter">
+                    <button class="filter-btn active">Mới nhất</button>
+                    <button class="filter-btn">Phổ biến</button>
+                    <button class="filter-btn">Đã theo dõi</button>
+                </div>
+
+                <!-- Posts Feed -->
+                <div class="posts-feed">
+                    <!-- Sample Post 1 -->
+                    <div class="community-post">
+                        <div class="post-header">
+                            <img src="../img/avartar.jpg" alt="User" class="avatar">
+                            <div class="post-info">
+                                <h5 class="post-author">Nguyễn Văn A</h5>
+                                <span class="post-time">2 giờ trước · <i class="fas fa-globe-americas"></i></span>
+                            </div>
+                            <div class="post-actions-dropdown">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <div class="dropdown-menu">
+                                    <a href="#"><i class="fas fa-bookmark"></i> Lưu bài viết</a>
+                                    <a href="#"><i class="fas fa-bell-slash"></i> Tắt thông báo</a>
+                                    <a href="#"><i class="fas fa-ban"></i> Ẩn bài viết</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>Vừa hoàn thành dự án web cho kỳ thực tập. Cảm ơn mọi người đã giúp đỡ! #webdev
+                                #internship</p>
+                            <img src="../img/triTueNhanTao.jpg" alt="Project Screenshot" class="post-image">
+                        </div>
+                        <div class="post-stats">
+                            <div class="like-count"><i class="fas fa-thumbs-up"></i> 24</div>
+                            <div class="comment-share-count">8 bình luận · 3 chia sẻ</div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn"><i class="far fa-thumbs-up"></i> Thích</button>
+                            <button class="post-action-btn"><i class="far fa-comment"></i> Bình luận</button>
+                            <button class="post-action-btn"><i class="far fa-share-square"></i> Chia sẻ</button>
+                        </div>
+                        <div class="post-comments">
+                            <!-- Comment Input -->
+                            <div class="comment-input-container">
+                                <img src="../img/avartar.jpg" alt="User" class="avatar comment-avatar">
+                                <input type="text" placeholder="Viết bình luận..." class="comment-input">
+                                <button class="comment-emoji-btn"><i class="far fa-smile"></i></button>
+                            </div>
+                            <!-- Comments List -->
+                            <div class="comments-list">
+                                <div class="comment">
+                                    <img src="../img/avartar.jpg" alt="Commenter" class="avatar comment-avatar">
+                                    <div class="comment-content">
+                                        <div class="comment-bubble">
+                                            <h6 class="comment-author">Trần Thị B</h6>
+                                            <p class="comment-text">Dự án đẹp quá! Bạn dùng công nghệ gì vậy?</p>
+                                        </div>
+                                        <div class="comment-actions">
+                                            <span>Thích</span>
+                                            <span>Phản hồi</span>
+                                            <span>1 giờ trước</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment">
+                                    <img src="../img/avartar.jpg" alt="Commenter" class="avatar comment-avatar">
+                                    <div class="comment-content">
+                                        <div class="comment-bubble">
+                                            <h6 class="comment-author">Lê Văn C</h6>
+                                            <p class="comment-text">Chúc mừng bạn nhé! Cố gắng phát triển thêm!</p>
+                                        </div>
+                                        <div class="comment-actions">
+                                            <span>Thích</span>
+                                            <span>Phản hồi</span>
+                                            <span>30 phút trước</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="show-more-comments">Xem thêm bình luận</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 2 -->
+                    <div class="community-post">
+                        <div class="post-header">
+                            <img src="../img/avartar.jpg" alt="User" class="avatar">
+                            <div class="post-info">
+                                <h5 class="post-author">Phạm Thị D</h5>
+                                <span class="post-time">1 ngày trước · <i class="fas fa-user-friends"></i></span>
+                            </div>
+                            <div class="post-actions-dropdown">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>Ai có tài liệu về Machine Learning không ạ? Đang chuẩn bị cho đồ án tốt nghiệp. Cảm ơn
+                                mọi người nhiều!</p>
+                        </div>
+                        <div class="post-stats">
+                            <div class="like-count"><i class="fas fa-thumbs-up"></i> 15</div>
+                            <div class="comment-share-count">12 bình luận</div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn"><i class="far fa-thumbs-up"></i> Thích</button>
+                            <button class="post-action-btn"><i class="far fa-comment"></i> Bình luận</button>
+                            <button class="post-action-btn"><i class="far fa-share-square"></i> Chia sẻ</button>
+                        </div>
+                        <div class="post-comments comments-closed">
+                            <!-- Comment Input -->
+                            <div class="comment-input-container">
+                                <img src="../img/avartar.jpg" alt="User" class="avatar comment-avatar">
+                                <input type="text" placeholder="Viết bình luận..." class="comment-input">
+                                <button class="comment-emoji-btn"><i class="far fa-smile"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar - Trending & Suggestions -->
+            <div class="col-lg-3 d-none d-lg-block community-right-sidebar">
+                <div class="trending-section">
+                    <h4 class="sidebar-title">Xu hướng</h4>
+                    <div class="trending-item">
+                        <div class="trending-tag">#webdevelopment</div>
+                        <div class="trending-count">1.2k bài viết</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-tag">#machinelearning</div>
+                        <div class="trending-count">856 bài viết</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-tag">#jobopportunities</div>
+                        <div class="trending-count">542 bài viết</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-tag">#internship2023</div>
+                        <div class="trending-count">423 bài viết</div>
+                    </div>
+                    <a href="#" class="see-more">Xem thêm</a>
+                </div>
+
+                <div class="suggestions-section">
+                    <h4 class="sidebar-title">Đề xuất kết nối</h4>
+                    <div class="suggestion-item">
+                        <img src="../img/avartar.jpg" alt="User" class="avatar">
+                        <div class="suggestion-info">
+                            <h5>Võ Minh E</h5>
+                            <p>Sinh viên ngành CNTT</p>
+                        </div>
+                        <button class="follow-btn">Kết nối</button>
+                    </div>
+                    <div class="suggestion-item">
+                        <img src="../img/avartar.jpg" alt="User" class="avatar">
+                        <div class="suggestion-info">
+                            <h5>Hoàng Văn F</h5>
+                            <p>Developer tại FPT Software</p>
+                        </div>
+                        <button class="follow-btn">Kết nối</button>
+                    </div>
+                    <div class="suggestion-item">
+                        <img src="../img/avartar.jpg" alt="User" class="avatar">
+                        <div class="suggestion-info">
+                            <h5>Trần Thị G</h5>
+                            <p>UI/UX Designer</p>
+                        </div>
+                        <button class="follow-btn">Kết nối</button>
+                    </div>
+                    <a href="#" class="see-more">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="../JavaScript/header.js"></script>
+    <script src="../JavaScript/checkLoginStatus.js"></script>
+    <script src="../JavaScript/profile.js"></script>
+</body>
+</html>
