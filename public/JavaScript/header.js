@@ -46,7 +46,7 @@ document.querySelectorAll('.logout').forEach((btn) => {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
     localStorage.clear();
-    window.location.href = '/';
+  window.location.href = '../../index.html';
   });
 });
 
