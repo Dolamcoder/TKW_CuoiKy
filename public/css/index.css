@@ -520,6 +520,9 @@ header {
 .card-body a{
     text-decoration: none;
   }
+.card-body .card-text{
+  text-align: justify;
+}
 .news .btn-primary {
   background-color: #007bff;
   border: none;
